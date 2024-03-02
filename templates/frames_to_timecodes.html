@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Frames/Timecodes Converter {% endblock %}</h1>
+	<form method="post">
+    <div class="form-group">
+			<label for="fps">FPS</label>
+			<input type="float" name="fps" placeholder="FPS value (e.g. 23.976)"
+				   class="form-control"
+                   value="{{ request.form['fps'] }}">
+			</input>
+		</div>
+		<div class="form-group">
+			<label for="frames">Frames</label>
+			<textarea name="frames" placeholder="Content of celltimes.txt" rows="10"
+				      class="form-control">{{ request.form['frames'] }}</textarea>
+		</div>
+
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary">Convert</button>
+		</div>
+
+		<div class="form-group">
+			<label for="timecodes">Timecodes</label>
+			<textarea name="timecodes" placeholder="" rows="10" readonly="1"
+					  class="form-control">{{ timecodes }}</textarea>
+		</div>
+	</form>
+	<hr>
+{% endblock %}
